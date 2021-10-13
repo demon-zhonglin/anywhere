@@ -3,6 +3,11 @@ Anywhere 随启随用的静态文件服务器
 
 Running static file server anywhere. 随时随地将你的当前目录变成一个静态文件服务器的根目录。
 
+antwhere 全局命令替换为 preview
+
+## 待做
+替换 serve-index 提供的默认模板
+
 ## Installation
 
 Install it as a command line tool via `npm -g`.
@@ -11,43 +16,53 @@ Install it as a command line tool via `npm -g`.
 npm install anywhere -g
 ```
 
+本地安装
+```sh
+npm link
+```
+本地卸载
+```sh
+npm uninstall -g preview
+```
+window 可在 C:\Users\<username>\AppData\Roaming\npm 下查看全局安装的包或者通过命令  npm list -g --dept 0
+
 ## Execution
 
 ```sh
-$ anywhere
+$ preview
 // or with port
-$ anywhere -p 8000
+$ preview -p 8000
 // or start it but silent(don't open browser)
-$ anywhere -s
+$ preview -s
 // or with hostname
-$ anywhere -h localhost -p 8888
+$ preview -h localhost -p 8888
 // or with folder
-$ anywhere -d ~/git/anywhere
+$ preview -d ~/git/anywhere
 // or enable html5 history
-$ anywhere -f /index.html
+$ preview -f /index.html
 ```
 
 ## Help
 
 ```sh
-$ anywhere --help
+$ preview --help
 Usage:
-  anywhere --help // print help information
-  anywhere // 8000 as default port, current folder as root
-  anywhere 8888 // 8888 as port
-  anywhere -p 8989 // 8989 as port
-  anywhere -s // don't open browser
-  anywhere -h localhost // localhost as hostname
-  anywhere -d /home // /home as root
-  anywhere -f /index.html  // Enable html5 history,the index is /index.html
-  anywhere --proxy http://localhost:7000/api // Support shorthand URL, webpack.config.js or customize config file
+  preview --help // print help information
+  preview // 8000 as default port, current folder as root
+  preview 8888 // 8888 as port
+  preview -p 8989 // 8989 as port
+  preview -s // don't open browser
+  preview -h localhost // localhost as hostname
+  preview -d /home // /home as root
+  preview -f /index.html  // Enable html5 history,the index is /index.html
+  preview --proxy http://localhost:7000/api // Support shorthand URL, webpack.config.js or customize config file
 ```
 
 #### Proxy argvs
 
 **Shorthand URL**
 ```
-anywhere --proxy http://localhost:7000/api
+preview --proxy http://localhost:7000/api
                  \___________________/\___/
                               |         |
                            target    context
