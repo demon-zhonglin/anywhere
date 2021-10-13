@@ -11,5 +11,13 @@ pids
 logs
 results
 
-node_modules
-npm-debug.log
+# dependencies
+/node_modules
+/npm-debug.log*
+/yarn-error.log
+/yarn.lock
+/package-lock.json
+
+# dev tool
+.vscode
+.idea
