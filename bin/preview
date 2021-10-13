@@ -15,7 +15,7 @@ var proxy = require('http-proxy-middleware');
 
 
 var debug = require('debug');
-debug.enable('anywhere');
+debug.enable('preview');
 
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
@@ -39,19 +39,22 @@ var argv = require("minimist")(process.argv.slice(2), {
 
 if (argv.help) {
   console.log("Usage:");
-  console.log("  anywhere --help // print help information");
-  console.log("  anywhere // 8000 as default port, current folder as root");
-  console.log("  anywhere 8888 // 8888 as port");
-  console.log("  anywhere -p 8989 // 8989 as port");
-  console.log("  anywhere -s // don't open browser");
-  console.log("  anywhere -h localhost // localhost as hostname");
-  console.log("  anywhere -d /home // /home as root");
-  console.log("  anywhere -l // print log");
-  console.log("  anywhere -f // Enable history fallback");
-  console.log("  anywhere --proxy http://localhost:7000/api // Support shorthand URL, webpack.config.js or customize config file");
+  console.log("  preview --help // print help information");
+  console.log("  preview // 8000 as default port, current folder as root");
+  console.log("  preview 8888 // 8888 as port");
+  console.log("  preview -p 8989 // 8989 as port");
+  console.log("  preview -s // don't open browser");
+  console.log("  preview -h localhost // localhost as hostname");
+  console.log("  preview -d /home // /home as root");
+  console.log("  preview -l // print log");
+  console.log("  preview -f // Enable history fallback");
+  console.log("  preview --proxy http://localhost:7000/api // Support shorthand URL, webpack.config.js or customize config file");
   process.exit(0);
 }
 
+/**
+ * 打开 url 链接
+*/
 var openURL = function (url) {
   switch (process.platform) {
     case "darwin":
@@ -72,8 +75,8 @@ var openURL = function (url) {
 };
 
 /**
- * Get ip(v4) address
- * @return {String} the ipv4 address or 'localhost'
+ * Get ip(v4) address | 获取IP(v4)地址
+ * @return {String} the ipv4 address or 'localhost' | ipv4 地址或"localhost"
  */
 var getIPAddress = function () {
   var ifaces = os.networkInterfaces();
@@ -89,7 +92,7 @@ var getIPAddress = function () {
   return ip || "127.0.0.1";
 };
 
-var log = debug('anywhere');
+var log = debug('preview');
 
 var app = connect();
 app.use(function (req, res, next) {
@@ -108,9 +111,9 @@ if (argv.fallback !== undefined) {
 app.use(serveStatic(argv.dir, { 'index': ['index.html'] }));
 app.use(serveIndex(argv.dir, { 'icons': true }));
 
-// anywhere --proxy webpack.config.js
-// anywhere --proxy proxy.config.js
-// anywhere --proxy http://localhost:7000/api
+// preview --proxy webpack.config.js
+// preview --proxy proxy.config.js
+// preview --proxy http://localhost:7000/api
 if (argv.proxy) {
   try {
     // if url
@@ -135,11 +138,11 @@ if (argv.proxy) {
   }
 }
 
-// anywhere 8888
-// anywhere -p 8989
-// anywhere 8888 -s // silent
-// anywhere -h localhost
-// anywhere -d /home
+// preview 8888
+// preview -p 8989
+// preview 8888 -s // silent
+// preview -h localhost
+// preview -d /home
 var port = parseInt(argv._[0] || argv.port, 10);
 var secure = port + 1;
 

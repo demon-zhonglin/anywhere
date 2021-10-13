@@ -1,9 +1,9 @@
 {
-  "name": "anywhere",
-  "version": "1.5.0",
+  "name": "preview",
+  "version": "0.0.1",
   "description": "Run static file server anywhere",
   "bin": {
-    "anywhere": "./bin/anywhere"
+    "preview": "./bin/preview"
   },
   "keywords": [
     "Static",
@@ -11,7 +11,7 @@
     "server",
     "Assets"
   ],
-  "author": "Jackson Tian",
+  "author": "demon_lin",
   "license": "MIT",
   "dependencies": {
     "connect": "^3.6.6",
@@ -24,11 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/JacksonTian/anywhere.git"
+    "url": "git://github.com/demon-zhonglin/preview.git"
   },
   "bugs": {
-    "url": "https://github.com/JacksonTian/anywhere/issues"
+    "url": "https://github.com/demon-zhonglin/preview/issues"
   },
-  "homepage": "https://github.com/JacksonTian/anywhere",
-  "files": ["bin", "keys"]
+  "homepage": "https://github.com/demon-zhonglin/preview",
+  "files": [
+    "bin",
+    "keys"
+  ]
 }
